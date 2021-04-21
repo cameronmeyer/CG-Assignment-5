@@ -13,27 +13,28 @@ public class dataGen
 	public static void main(String [] args)
 	{
 		int numSteps = 1;
-		int length = 3;
-		int width = 3;
-		int height = 3;
+		int stepLength = 2;
+		int stepWidth = 5;
+		int stepHeight = 2;
 		
 		if(numSteps > 0)
 		{
+			// Create the 4 vertices that make up the base
 			System.out.println("1 0 0 0");
-			System.out.println("2 " + length + " 0 0");
-			System.out.println("3 " + length + " " + width + " 0");
-			System.out.println("4 0 " + width + " 0");
+			System.out.println("2 " + (stepLength*numSteps) + " 0 0");
+			System.out.println("3 " + (stepLength*numSteps) + " " + stepWidth + " 0");
+			System.out.println("4 0 " + stepWidth + " 0");
 			
 			for(int i = 1; i <= numSteps; i++)
 			{
-				// Create 4 vertices at a time
-				int stepHeight = i*(height/numSteps);
-				System.out.println(i*4+1 + " " + ((length/numSteps)+(numSteps-i-1)*(length/numSteps)) + " " + 0 + " " + stepHeight);
-				System.out.println(i*4+2 + " " + ((length/numSteps)+(numSteps-i)*(length/numSteps)) + " " + 0 + " " + stepHeight);
-				System.out.println(i*4+3 + " " + ((length/numSteps)+(numSteps-i)*(length/numSteps)) + " " + width + " " + stepHeight);
-				System.out.println(i*4+4 + " " + ((length/numSteps)+(numSteps-i-1)*(length/numSteps)) + " " + width + " " + stepHeight);
-				
-				// I THINK THE ABOVE INTEGER MATH IS GETTING TRUNCATED TO 0 FOR OTHER TESTED VALUES
+				// Create 4 vertices at a time for the top of each step
+				int innerStepLength = (numSteps - i) * stepLength; 
+				int outerStepLength = (numSteps - i) * stepLength + stepLength; 
+				//float stepHeight = i*(height/numSteps);
+				System.out.println(i*4+1 + " " + innerStepLength + " " + 0 + " " + (stepHeight*i));
+				System.out.println(i*4+2 + " " + outerStepLength + " " + 0 + " " + (stepHeight*i));
+				System.out.println(i*4+3 + " " + outerStepLength + " " + stepWidth + " " + (stepHeight*i));
+				System.out.println(i*4+4 + " " + innerStepLength + " " + stepWidth + " " + (stepHeight*i));
 			}
 			
 			System.out.println("Faces:");	
