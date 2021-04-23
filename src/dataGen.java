@@ -1,12 +1,12 @@
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-
 // Cameron Meyer
 // Assignment 5 - Exercise 6.9
 // CS 4361.001
 
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class dataGen
 {
